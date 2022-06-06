@@ -41,10 +41,10 @@ def auth():
         time.sleep(1)
         driver.find_element(By.ID, 'login-password').send_keys(password)
         time.sleep(1)
-        driver.find_element(By.XPATH,
-                            """/html/body/div[1]/div/div[2]/div/div/div[2]/div[3]/div[2]/button/div[1]""").click()
-        time.sleep(5.5)
-        driver.find_element(By.XPATH, """/html/body/div[14]/div[3]/div/div[2]/button""").click()
+        driver.find_element(By.XPATH,"""/html/body/div[1]/div/div[2]/div/div/div[2]/div[3]/div[2]/button/div[1]""").click()  #update login button
+        time.sleep(1)
+        time.sleep(3.5)
+        driver.find_element(By.XPATH, """//*[@id="onetrust-close-btn-container"]/button""").click()  # remove cookie
     if inp == 2:
         print(Fore.RED + "Auth type not finished.")
     if inp == 3:
@@ -57,31 +57,30 @@ auth()
 
 
 def createplaylist():
-    driver.find_element(By.XPATH, """/html/body/div[4]/div/div[2]/nav/div[1]/div[2]/div/div[1]/button""").click()
+    driver.find_element(By.XPATH, """//*[@id="main"]/div/div[2]/nav/div[1]/div[2]/div/div[1]/button""").click()
     time.sleep(2)
-    driver.find_element(By.XPATH,
-                        """/html/body/div[4]/div/div[2]/div[3]/div[1]/div[2]/div[2]/div/div/div[2]/main/div/section/div[2]/div[2]/div/button""").click()
+    driver.find_element(By.XPATH, """//*[@data-testid="more-button"]""").click()
     time.sleep(.3)
-    driver.find_element(By.XPATH, """/html/body/div[15]/div/ul/li[4]/button""").click()
+    driver.find_element(By.CSS_SELECTOR, """#context-menu > ul > li:nth-child(4) > button""").click()
     time.sleep(.3)
-    driver.find_element(By.XPATH, """/html/body/div[17]/div/div/div/div[2]/div[2]/input""").clear()
+    driver.find_element(By.XPATH, """//*[@data-testid="playlist-edit-details-name-input"]""").clear()
     time.sleep(.3)
-    driver.find_element(By.XPATH, """/html/body/div[17]/div/div/div/div[2]/div[2]/input""").send_keys("Queue Playlist!")
+    driver.find_element(By.XPATH, """//*[@data-testid="playlist-edit-details-name-input"]""").send_keys("Queue Playlist!") #c
     time.sleep(.3)
-    driver.find_element(By.XPATH, """/html/body/div[17]/div/div/div/div[2]/div[3]/textarea""").send_keys("Automatically move your songs from the queue to a playlist! Made with <3 by clumber. https://github.com/SubwooferLullaby/spotifyeasyplaylist")
+    driver.find_element(By.XPATH, """//*[@data-testid="playlist-edit-details-description-input"]""").send_keys("Automatically move your songs from the queue to a playlist! Made with <3 by clumber. https://github.com/SubwooferLullaby/spotifyeasyplaylist")
     time.sleep(.3)
-    driver.find_element(By.XPATH, """/html/body/div[17]/div/div/div/div[2]/div[4]/button""").click() #save checkpoint
+    driver.find_element(By.XPATH, """//*[@data-testid="playlist-edit-details-save-button"]""").click() #save checkpoint
     time.sleep(2)
 
 def movesongs():
     print(Fore.BLUE + "Started moving songs!")
-    driver.find_element(By.XPATH,"""/html/body/div[4]/div/div[2]/div[2]/footer/div[1]/div[3]/div/div[1]/div/button""").click()
+    driver.find_element(By.XPATH, """//*[@data-testid="control-button-queue"]""").click()
     while True:
         try:
-            driver.find_element(By.XPATH, """/html/body/div[4]/div/div[2]/div[3]/div[1]/div[2]/div[2]/div/div/div[2]/main/section/section/div[1]/div/div[2]/div/div/div[4]/button[2]""").click()
-            driver.find_element(By.XPATH, """/html/body/div[16]/div/ul/li[7]/button""").click()
-            driver.find_element(By.XPATH, """/html/body/div[16]/div/ul/li[7]/div/ul/div/li[2]/button""").click() # dev note remember this will only work if the queue playlist is the first on the playlist listing bar located on left
-            driver.find_element(By.XPATH, """/html/body/div[4]/div/div[2]/div[2]/footer/div[1]/div[2]/div/div[1]/div[2]/button[1]""").click()
+            driver.find_element(By.XPATH, """//*[@data-testid="more-button"]""").click()
+            driver.find_element(By.XPATH, """//*[@id="context-menu"]/ul/li[7]/button""").click()
+            driver.find_element(By.XPATH, """/html/body/div[16]/div/ul/li[7]/div/ul/div/li[2]/button""").click()
+            driver.find_element(By.XPATH, """//*[@data-testid="control-button-skip-forward"]""").click()
             time.sleep(1.7)
         except Exception as e:
             pass
