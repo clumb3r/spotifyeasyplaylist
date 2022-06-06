@@ -1,5 +1,5 @@
 # spotifyeasyplaylist
-Easy playlist generator using spotify's built in machine learning queue system. If something breaks or you would like to contribute create a pull request or message me 
+Easy playlist generator using spotifys built in machine learning queue system. If something breaks or you would like to contribute create a pull request or message me 
 on discord clumber#7126.
 
 * Requires the correct version of chromedriver.
