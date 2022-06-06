@@ -24,3 +24,6 @@ on discord clumber#7126.
 * Where to find your spotify "username" -> https://www.spotify.com/us/account/overview/
 * Chrome driver download -> https://chromedriver.chromium.org/downloads
 
+# NOTE
+There is a chance this will break for you due to the element "XPATH" being different. 
+
